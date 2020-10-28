@@ -1,0 +1,1168 @@
+{
+   "id":"b63c669b-e198-4536-a48f-ec5d242b89f0",
+   "name":"Receiving V3",
+   "description":null,
+   "auth":null,
+   "events":null,
+   "variables":[
+      
+   ],
+   "order":[
+      "1a69727d-7516-49a6-a381-b6904a2648af",
+      "5030df0e-9e68-472a-a5bc-490175ffbbe2",
+      "b549ccb9-ac4d-463f-9151-c7c12929a921",
+      "884e8616-bcaf-45f2-a356-b32f2e7b98e8",
+      "ed925712-cb1d-47bb-8df1-f0bd2508cd28",
+      "fc2b2c76-6558-4217-8dd6-35f7f49059c9",
+      "4288afa3-b914-4bfd-b8ff-a6b924295e7e",
+      "a46af391-37d5-43b5-a1ba-e75943bd51e9",
+      "c4f354f6-5308-4e22-ab95-f17776aefc2c",
+      "cd77af6a-bbf7-4d07-a607-de762c5dcf25",
+      "1e272725-844e-44a1-a87a-e6e1f3b30a2b",
+      "11523b79-d155-4822-a1d8-7baf83a48cef",
+      "a1659077-c085-405f-8bfd-9ba5336c8931",
+      "03529fb2-38d4-4486-bcb2-d9168f3a5537",
+      "b6fd9ba3-3f7b-4260-9c51-22d05de6274c",
+      "ef4c201e-96c0-44c6-9638-0cfabaf47edb"
+   ],
+   "folders_order":[
+      "77922d6f-7db2-43d7-a243-e0bf63a96b51"
+   ],
+   "protocolProfileBehavior":{
+      
+   },
+   "folders":[
+      {
+         "id":"77922d6f-7db2-43d7-a243-e0bf63a96b51",
+         "name":"wrapper",
+         "description":null,
+         "auth":null,
+         "events":null,
+         "collection":"b63c669b-e198-4536-a48f-ec5d242b89f0",
+         "folder":null,
+         "order":[
+            "00897483-10d2-44c6-b84d-347c85e26bf5",
+            "6d81906f-d25c-4d9a-8cd6-27877a3d6d17",
+            "77ab7ce5-5b40-4fb0-b335-cf04464041a1",
+            "faf057e1-b23b-4bbd-833c-8b8a136331e7",
+            "887f796a-ce09-4f95-b43d-a09565ebfbbc",
+            "7b5194a7-b7a7-481c-a666-83821ca1effd",
+            "20b3b83a-b49a-4599-a2f9-3f3744d5c64f",
+            "13807abf-48e8-4ae6-a7b3-d50cee68c10c",
+            "982adcde-d47c-48d6-ad0f-b75c8986e7a4",
+            "ad7e6078-acca-4e8b-8426-33bfe12e095e"
+         ],
+         "folders_order":[
+            
+         ],
+         "protocolProfileBehavior":{
+            
+         },
+         "collectionId":"b63c669b-e198-4536-a48f-ec5d242b89f0",
+         "folderId":"77922d6f-7db2-43d7-a243-e0bf63a96b51"
+      }
+   ],
+   "requests":[
+      {
+         "id":"00897483-10d2-44c6-b84d-347c85e26bf5",
+         "name":"#0 - Get volume",
+         "url":"http:\/\/api.internal.ml.com\/fbm-wms-warehouse-volume-stage\/wms\/volumes\/2782\/1",
+         "description":null,
+         "data":null,
+         "dataOptions":null,
+         "dataMode":null,
+         "headerData":[
+            
+         ],
+         "method":"GET",
+         "pathVariableData":[
+            
+         ],
+         "queryParams":[
+            
+         ],
+         "auth":null,
+         "events":null,
+         "folder":"77922d6f-7db2-43d7-a243-e0bf63a96b51",
+         "currentHelper":null,
+         "helperAttributes":null,
+         "collectionId":"b63c669b-e198-4536-a48f-ec5d242b89f0",
+         "headers":"",
+         "pathVariables":{
+            
+         }
+      },
+      {
+         "id":"03529fb2-38d4-4486-bcb2-d9168f3a5537",
+         "name":"Search inbound",
+         "url":"{{scope}}.fbm-wms-inbound2.melifrontends.com\/wms\/warehouses\/BRTW01\/inbounds\/search?status=waiting_arrival&sort=last_updated_desc",
+         "description":null,
+         "data":null,
+         "dataOptions":null,
+         "dataMode":null,
+         "headerData":[
+            {
+               "key":"X-Auth-Token",
+               "value":"{{tokn}}"
+            }
+         ],
+         "method":"GET",
+         "pathVariableData":[
+            
+         ],
+         "queryParams":[
+            {
+               "key":"status",
+               "value":"waiting_arrival"
+            },
+            {
+               "key":"sort",
+               "value":"last_updated_desc"
+            }
+         ],
+         "auth":null,
+         "events":null,
+         "folder":null,
+         "currentHelper":null,
+         "helperAttributes":null,
+         "collectionId":"b63c669b-e198-4536-a48f-ec5d242b89f0",
+         "headers":"X-Auth-Token: {{tokn}}\n",
+         "pathVariables":{
+            
+         }
+      },
+      {
+         "id":"11523b79-d155-4822-a1d8-7baf83a48cef",
+         "name":"Search receiving working by user",
+         "url":"{{scope.receiving}}.fbm-wms-receiving.melifrontends.com\/wms\/receivings?user_id={{test.user.id}}&status=WORKING",
+         "description":null,
+         "data":[
+            
+         ],
+         "dataOptions":null,
+         "dataMode":"raw",
+         "headerData":[
+            {
+               "key":"Content-Type",
+               "name":"Content-Type",
+               "value":"application\/json",
+               "type":"text"
+            },
+            {
+               "key":"X-Auth-Token",
+               "value":"{{tokn}}",
+               "type":"text"
+            }
+         ],
+         "method":"GET",
+         "pathVariableData":[
+            
+         ],
+         "queryParams":[
+            {
+               "key":"user_id",
+               "value":"{{test.user.id}}"
+            },
+            {
+               "key":"status",
+               "value":"WORKING"
+            }
+         ],
+         "auth":null,
+         "events":[
+            {
+               "listen":"test",
+               "script":{
+                  "id":"ab82f0d3-8895-4022-b5f9-c2af0565d506",
+                  "exec":[
+                     "const id = pm.response.json().id;",
+                     "pm.globals.set(\"receiving_id\", id);"
+                  ],
+                  "type":"text\/javascript"
+               }
+            }
+         ],
+         "folder":null,
+         "protocolProfileBehavior":{
+            "disableBodyPruning":true
+         },
+         "preRequestScript":null,
+         "tests":"const id = pm.response.json().id;\npm.globals.set(\"receiving_id\", id);",
+         "currentHelper":null,
+         "helperAttributes":null,
+         "collectionId":"b63c669b-e198-4536-a48f-ec5d242b89f0",
+         "rawModeData":"{\n\t\"user_id\": \"{{test.user.id}}\",\n\t\"warehouse_id\": \"{{warehouse.id}}\"\n}",
+         "headers":"Content-Type: application\/json\nX-Auth-Token: {{tokn}}\n",
+         "pathVariables":{
+            
+         }
+      },
+      {
+         "id":"13807abf-48e8-4ae6-a7b3-d50cee68c10c",
+         "name":"#3.3 - Refuse volume",
+         "url":"http:\/\/localhost:8080\/wms\/warehouses\/{{warehouse.id}}\/receivings\/{{receiving_id}}\/volumes\/162959\/8?caller.id={{test.user.id}}&format=flan",
+         "description":null,
+         "data":[
+            
+         ],
+         "dataOptions":null,
+         "dataMode":"raw",
+         "headerData":[
+            {
+               "key":"Content-Type",
+               "name":"Content-Type",
+               "value":"application\/json",
+               "type":"text"
+            }
+         ],
+         "method":"PATCH",
+         "pathVariableData":[
+            
+         ],
+         "queryParams":[
+            {
+               "key":"caller.id",
+               "value":"{{test.user.id}}"
+            },
+            {
+               "key":"format",
+               "value":"flan"
+            }
+         ],
+         "auth":null,
+         "events":null,
+         "folder":"77922d6f-7db2-43d7-a243-e0bf63a96b51",
+         "currentHelper":null,
+         "helperAttributes":null,
+         "collectionId":"b63c669b-e198-4536-a48f-ec5d242b89f0",
+         "rawModeData":"{\n\t\"reason\": \"damaged\"\n}",
+         "headers":"Content-Type: application\/json\n",
+         "pathVariables":{
+            
+         }
+      },
+      {
+         "id":"1a69727d-7516-49a6-a381-b6904a2648af",
+         "name":"#0 - Get volume",
+         "url":"http:\/\/api.internal.ml.com\/fbm-wms-warehouse-volume-stage\/wms\/volumes\/2782\/1",
+         "description":null,
+         "data":null,
+         "dataOptions":null,
+         "dataMode":null,
+         "headerData":[
+            
+         ],
+         "method":"GET",
+         "pathVariableData":[
+            
+         ],
+         "queryParams":[
+            
+         ],
+         "auth":null,
+         "events":null,
+         "folder":null,
+         "currentHelper":null,
+         "helperAttributes":null,
+         "collectionId":"b63c669b-e198-4536-a48f-ec5d242b89f0",
+         "headers":"",
+         "pathVariables":{
+            
+         }
+      },
+      {
+         "id":"1e272725-844e-44a1-a87a-e6e1f3b30a2b",
+         "name":"#5 - Finish receiving",
+         "url":"http:\/\/{{scope.receiving}}.fbm-wms-receiving.melifrontends.com\/wms\/receivings\/{{receiving_id}}",
+         "description":null,
+         "data":[
+            
+         ],
+         "dataOptions":null,
+         "dataMode":"raw",
+         "headerData":[
+            {
+               "key":"Content-Type",
+               "name":"Content-Type",
+               "type":"text",
+               "value":"application\/json"
+            },
+            {
+               "key":"Accept-Language",
+               "value":"pt-BR",
+               "type":"text"
+            }
+         ],
+         "method":"PATCH",
+         "pathVariableData":[
+            
+         ],
+         "queryParams":[
+            
+         ],
+         "auth":null,
+         "events":null,
+         "folder":null,
+         "currentHelper":null,
+         "helperAttributes":null,
+         "collectionId":"b63c669b-e198-4536-a48f-ec5d242b89f0",
+         "rawModeData":"{\n\t\"status\": \"FINISHED\"\n}",
+         "headers":"Content-Type: application\/json\nAccept-Language: pt-BR\n",
+         "pathVariables":{
+            
+         }
+      },
+      {
+         "id":"20b3b83a-b49a-4599-a2f9-3f3744d5c64f",
+         "name":"#3.2 - Generate label",
+         "url":"http:\/\/api.internal.ml.com\/fbm-wms-inbound-wrapper-stage\/wms\/warehouses\/{{warehouse.id}}\/receivings\/{{receiving_id}}\/labels?caller.id={{test.user.id}}&format=flan",
+         "description":null,
+         "data":[
+            
+         ],
+         "dataOptions":null,
+         "dataMode":"raw",
+         "headerData":[
+            {
+               "key":"Content-Type",
+               "name":"Content-Type",
+               "value":"application\/json",
+               "type":"text"
+            }
+         ],
+         "method":"POST",
+         "pathVariableData":[
+            
+         ],
+         "queryParams":[
+            {
+               "key":"caller.id",
+               "value":"{{test.user.id}}"
+            },
+            {
+               "key":"format",
+               "value":"flan"
+            }
+         ],
+         "auth":null,
+         "events":null,
+         "folder":"77922d6f-7db2-43d7-a243-e0bf63a96b51",
+         "currentHelper":null,
+         "helperAttributes":null,
+         "collectionId":"b63c669b-e198-4536-a48f-ec5d242b89f0",
+         "rawModeData":"{\n\t\"inbound_id\": 1846\n}",
+         "headers":"Content-Type: application\/json\n",
+         "pathVariables":{
+            
+         }
+      },
+      {
+         "id":"4288afa3-b914-4bfd-b8ff-a6b924295e7e",
+         "name":"#3.1 - Scan volume",
+         "url":"http:\/\/{{scope.receiving}}.fbm-wms-receiving.melifrontends.com\/wms\/receivings\/{{receiving_id}}\/volumes\/{{inbound_id}}\/1",
+         "description":null,
+         "data":[
+            
+         ],
+         "dataOptions":null,
+         "dataMode":"raw",
+         "headerData":[
+            {
+               "key":"Content-Type",
+               "name":"Content-Type",
+               "type":"text",
+               "value":"application\/json"
+            }
+         ],
+         "method":"PATCH",
+         "pathVariableData":[
+            
+         ],
+         "queryParams":[
+            
+         ],
+         "auth":null,
+         "events":null,
+         "folder":null,
+         "currentHelper":null,
+         "helperAttributes":null,
+         "collectionId":"b63c669b-e198-4536-a48f-ec5d242b89f0",
+         "rawModeData":"{}",
+         "headers":"Content-Type: application\/json\n",
+         "pathVariables":{
+            
+         }
+      },
+      {
+         "id":"5030df0e-9e68-472a-a5bc-490175ffbbe2",
+         "name":"#0 - Get receiving",
+         "url":"{{scope.receiving}}.fbm-wms-receiving.melifrontends.com\/wms\/receivings\/:receiving_id",
+         "description":null,
+         "data":[
+            
+         ],
+         "dataOptions":null,
+         "dataMode":"raw",
+         "headerData":[
+            {
+               "key":"Content-Type",
+               "name":"Content-Type",
+               "value":"application\/json",
+               "type":"text"
+            },
+            {
+               "key":"X-Auth-Token",
+               "value":"{{tokn}}",
+               "type":"text"
+            }
+         ],
+         "method":"GET",
+         "pathVariableData":[
+            {
+               "key":"receiving_id",
+               "value":"{{receiving_id}}"
+            }
+         ],
+         "queryParams":[
+            
+         ],
+         "auth":null,
+         "events":null,
+         "folder":null,
+         "protocolProfileBehavior":{
+            "disableBodyPruning":true
+         },
+         "currentHelper":null,
+         "helperAttributes":null,
+         "collectionId":"b63c669b-e198-4536-a48f-ec5d242b89f0",
+         "rawModeData":"{\n\t\"inbound_id\": \"1795\"\n}",
+         "headers":"Content-Type: application\/json\nX-Auth-Token: {{tokn}}\n",
+         "pathVariables":{
+            "receiving_id":"{{receiving_id}}"
+         }
+      },
+      {
+         "id":"6d81906f-d25c-4d9a-8cd6-27877a3d6d17",
+         "name":"#0 - Get receiving",
+         "url":"http:\/\/api.internal.ml.com\/fbm-wms-receiving-stage\/wms\/receivings\/{{receiving_id}}",
+         "description":null,
+         "data":[
+            
+         ],
+         "dataOptions":null,
+         "dataMode":"raw",
+         "headerData":[
+            {
+               "key":"Content-Type",
+               "name":"Content-Type",
+               "value":"application\/json",
+               "type":"text"
+            }
+         ],
+         "method":"GET",
+         "pathVariableData":[
+            
+         ],
+         "queryParams":[
+            
+         ],
+         "auth":null,
+         "events":null,
+         "folder":"77922d6f-7db2-43d7-a243-e0bf63a96b51",
+         "protocolProfileBehavior":{
+            "disableBodyPruning":true
+         },
+         "currentHelper":null,
+         "helperAttributes":null,
+         "collectionId":"b63c669b-e198-4536-a48f-ec5d242b89f0",
+         "rawModeData":"{\n\t\"inbound_id\": \"1795\"\n}",
+         "headers":"Content-Type: application\/json\n",
+         "pathVariables":{
+            
+         }
+      },
+      {
+         "id":"77ab7ce5-5b40-4fb0-b335-cf04464041a1",
+         "name":"#0 - Get PDF",
+         "url":"api.internal.ml.com\/fbm-wms-pdf-creator-stage\/wms\/pdfs?file-name=palletsheets\/64eadc18-c78d-4ab5-9f4a-660931d608cb.pdf",
+         "description":null,
+         "data":null,
+         "dataOptions":null,
+         "dataMode":null,
+         "headerData":[
+            
+         ],
+         "method":"GET",
+         "pathVariableData":[
+            
+         ],
+         "queryParams":[
+            {
+               "key":"file-name",
+               "value":"palletsheets\/64eadc18-c78d-4ab5-9f4a-660931d608cb.pdf"
+            }
+         ],
+         "auth":null,
+         "events":null,
+         "folder":"77922d6f-7db2-43d7-a243-e0bf63a96b51",
+         "currentHelper":null,
+         "helperAttributes":null,
+         "collectionId":"b63c669b-e198-4536-a48f-ec5d242b89f0",
+         "headers":"",
+         "pathVariables":{
+            
+         }
+      },
+      {
+         "id":"7b5194a7-b7a7-481c-a666-83821ca1effd",
+         "name":"#3.1 - Scan volume",
+         "url":"http:\/\/api.internal.ml.com\/fbm-wms-inbound-wrapper-stage\/wms\/warehouses\/{{warehouse.id}}\/receivings\/{{receiving_id}}\/volumes?format=flan&caller.id={{test.user.id}}",
+         "description":null,
+         "data":[
+            
+         ],
+         "dataOptions":null,
+         "dataMode":"raw",
+         "headerData":[
+            {
+               "key":"Content-Type",
+               "name":"Content-Type",
+               "value":"application\/json",
+               "type":"text"
+            }
+         ],
+         "method":"POST",
+         "pathVariableData":[
+            
+         ],
+         "queryParams":[
+            {
+               "key":"format",
+               "value":"flan"
+            },
+            {
+               "key":"caller.id",
+               "value":"{{test.user.id}}"
+            }
+         ],
+         "auth":null,
+         "events":null,
+         "folder":"77922d6f-7db2-43d7-a243-e0bf63a96b51",
+         "currentHelper":null,
+         "helperAttributes":null,
+         "collectionId":"b63c669b-e198-4536-a48f-ec5d242b89f0",
+         "rawModeData":"{\n\t\"volume_label\": \"159191\/1\"\n}",
+         "headers":"Content-Type: application\/json\n",
+         "pathVariables":{
+            
+         }
+      },
+      {
+         "id":"884e8616-bcaf-45f2-a356-b32f2e7b98e8",
+         "name":"#1 - Delete lock",
+         "url":"api.internal.ml.com\/fbm-wms-warehouses-stage\/wms\/warehouses\/{{warehouse.id}}\/addresses\/DK-0-008-000-00-00\/lock",
+         "description":null,
+         "data":null,
+         "dataOptions":null,
+         "dataMode":null,
+         "headerData":[
+            {
+               "key":"X-Auth-Token",
+               "value":"{{tokn}}"
+            }
+         ],
+         "method":"DELETE",
+         "pathVariableData":[
+            
+         ],
+         "queryParams":[
+            
+         ],
+         "auth":null,
+         "events":[
+            {
+               "listen":"test",
+               "script":{
+                  "id":"b362fa34-298d-4ef5-bc52-94d3207083f4",
+                  "exec":[
+                     ""
+                  ],
+                  "type":"text\/javascript"
+               }
+            }
+         ],
+         "folder":null,
+         "preRequestScript":null,
+         "tests":null,
+         "currentHelper":null,
+         "helperAttributes":null,
+         "collectionId":"b63c669b-e198-4536-a48f-ec5d242b89f0",
+         "headers":"X-Auth-Token: {{tokn}}\n",
+         "pathVariables":{
+            
+         }
+      },
+      {
+         "id":"887f796a-ce09-4f95-b43d-a09565ebfbbc",
+         "name":"#2 - Start receiving - Scan dock",
+         "url":"http:\/\/api.internal.ml.com\/fbm-wms-inbound-wrapper-stage\/wms\/warehouses\/{{warehouse.id}}\/receivings?format=flan&caller.id={{test.user.id}}",
+         "description":null,
+         "data":[
+            
+         ],
+         "dataOptions":null,
+         "dataMode":"raw",
+         "headerData":[
+            {
+               "key":"Content-Type",
+               "name":"Content-Type",
+               "value":"application\/json",
+               "type":"text"
+            }
+         ],
+         "method":"POST",
+         "pathVariableData":[
+            
+         ],
+         "queryParams":[
+            {
+               "key":"format",
+               "value":"flan"
+            },
+            {
+               "key":"caller.id",
+               "value":"{{test.user.id}}"
+            }
+         ],
+         "auth":null,
+         "events":[
+            {
+               "listen":"test",
+               "script":{
+                  "id":"6daeca43-0d04-4732-bd22-bd49afb1287d",
+                  "exec":[
+                     "const id = pm.response.json().context_data.id;",
+                     "pm.globals.set(\"receiving_id\", id);"
+                  ],
+                  "type":"text\/javascript"
+               }
+            }
+         ],
+         "folder":"77922d6f-7db2-43d7-a243-e0bf63a96b51",
+         "preRequestScript":null,
+         "tests":"const id = pm.response.json().context_data.id;\npm.globals.set(\"receiving_id\", id);",
+         "currentHelper":null,
+         "helperAttributes":null,
+         "collectionId":"b63c669b-e198-4536-a48f-ec5d242b89f0",
+         "rawModeData":"{\n\t\"address_id\":\"DK-0-008-000-00-00\"\n}",
+         "headers":"Content-Type: application\/json\n",
+         "pathVariables":{
+            
+         }
+      },
+      {
+         "id":"982adcde-d47c-48d6-ad0f-b75c8986e7a4",
+         "name":"#4 - Scan pallet",
+         "url":"http:\/\/api.internal.ml.com\/fbm-wms-inbound-wrapper-stage\/wms\/warehouses\/{{warehouse.id}}\/receivings\/{{receiving_id}}\/pallets\/PL-0-008-000-00-00?caller.id={{test.user.id}}&format=flan",
+         "description":null,
+         "data":[
+            
+         ],
+         "dataOptions":null,
+         "dataMode":"raw",
+         "headerData":[
+            {
+               "key":"Content-Type",
+               "name":"Content-Type",
+               "type":"text",
+               "value":"application\/json"
+            }
+         ],
+         "method":"PATCH",
+         "pathVariableData":[
+            
+         ],
+         "queryParams":[
+            {
+               "key":"caller.id",
+               "value":"{{test.user.id}}"
+            },
+            {
+               "key":"format",
+               "value":"flan"
+            }
+         ],
+         "auth":null,
+         "events":null,
+         "folder":"77922d6f-7db2-43d7-a243-e0bf63a96b51",
+         "currentHelper":null,
+         "helperAttributes":null,
+         "collectionId":"b63c669b-e198-4536-a48f-ec5d242b89f0",
+         "rawModeData":"{}",
+         "headers":"Content-Type: application\/json\n",
+         "pathVariables":{
+            
+         }
+      },
+      {
+         "id":"a1659077-c085-405f-8bfd-9ba5336c8931",
+         "name":"Gerar label",
+         "url":"http:\/\/api.internal.ml.com\/fbm-labels-stage\/inbounds\/1846\/labels\/volumes\/1R?printer_type=zpl2&label_size=10_x_5&quantity=1",
+         "description":null,
+         "data":null,
+         "dataOptions":null,
+         "dataMode":null,
+         "headerData":[
+            
+         ],
+         "method":"GET",
+         "pathVariableData":[
+            
+         ],
+         "queryParams":[
+            {
+               "key":"printer_type",
+               "value":"zpl2"
+            },
+            {
+               "key":"label_size",
+               "value":"10_x_5"
+            },
+            {
+               "key":"quantity",
+               "value":"1"
+            }
+         ],
+         "auth":null,
+         "events":null,
+         "folder":null,
+         "currentHelper":null,
+         "helperAttributes":null,
+         "collectionId":"b63c669b-e198-4536-a48f-ec5d242b89f0",
+         "headers":"",
+         "pathVariables":{
+            
+         }
+      },
+      {
+         "id":"a46af391-37d5-43b5-a1ba-e75943bd51e9",
+         "name":"#3.2 - Generate label",
+         "url":"http:\/\/api.internal.ml.com\/fbm-wms-receiving-stage\/wms\/receivings\/{{receiving_id}}\/labels",
+         "description":null,
+         "data":[
+            
+         ],
+         "dataOptions":null,
+         "dataMode":"raw",
+         "headerData":[
+            {
+               "key":"Content-Type",
+               "name":"Content-Type",
+               "value":"application\/json",
+               "type":"text"
+            }
+         ],
+         "method":"POST",
+         "pathVariableData":[
+            
+         ],
+         "queryParams":[
+            
+         ],
+         "auth":null,
+         "events":null,
+         "folder":null,
+         "currentHelper":null,
+         "helperAttributes":null,
+         "collectionId":"b63c669b-e198-4536-a48f-ec5d242b89f0",
+         "rawModeData":"{\n\t\"inbound_id\": 1791\n}",
+         "headers":"Content-Type: application\/json\n",
+         "pathVariables":{
+            
+         }
+      },
+      {
+         "id":"ad7e6078-acca-4e8b-8426-33bfe12e095e",
+         "name":"#5 - Finish receiving",
+         "url":"http:\/\/api.internal.ml.com\/fbm-wms-inbound-wrapper-stage\/wms\/warehouses\/{{warehouse.id}}\/receivings\/{{receiving_id}}?caller.id={{test.user.id}}&format=flan",
+         "description":null,
+         "data":[
+            
+         ],
+         "dataOptions":null,
+         "dataMode":"raw",
+         "headerData":[
+            {
+               "key":"Content-Type",
+               "name":"Content-Type",
+               "value":"application\/json",
+               "type":"text"
+            }
+         ],
+         "method":"PATCH",
+         "pathVariableData":[
+            
+         ],
+         "queryParams":[
+            {
+               "key":"caller.id",
+               "value":"{{test.user.id}}"
+            },
+            {
+               "key":"format",
+               "value":"flan"
+            }
+         ],
+         "auth":null,
+         "events":null,
+         "folder":"77922d6f-7db2-43d7-a243-e0bf63a96b51",
+         "currentHelper":null,
+         "helperAttributes":null,
+         "collectionId":"b63c669b-e198-4536-a48f-ec5d242b89f0",
+         "rawModeData":"{\n\t\"status\": \"FINISHED\"\n}",
+         "headers":"Content-Type: application\/json\n",
+         "pathVariables":{
+            
+         }
+      },
+      {
+         "id":"b549ccb9-ac4d-463f-9151-c7c12929a921",
+         "name":"#0 - Get PDF",
+         "url":"api.internal.ml.com\/fbm-wms-pdf-creator-stage\/wms\/pdfs?file-name=palletsheets\/64eadc18-c78d-4ab5-9f4a-660931d608cb.pdf",
+         "description":null,
+         "data":null,
+         "dataOptions":null,
+         "dataMode":null,
+         "headerData":[
+            
+         ],
+         "method":"GET",
+         "pathVariableData":[
+            
+         ],
+         "queryParams":[
+            {
+               "key":"file-name",
+               "value":"palletsheets\/64eadc18-c78d-4ab5-9f4a-660931d608cb.pdf"
+            }
+         ],
+         "auth":null,
+         "events":null,
+         "folder":null,
+         "currentHelper":null,
+         "helperAttributes":null,
+         "collectionId":"b63c669b-e198-4536-a48f-ec5d242b89f0",
+         "headers":"",
+         "pathVariables":{
+            
+         }
+      },
+      {
+         "id":"b6fd9ba3-3f7b-4260-9c51-22d05de6274c",
+         "name":"Process receiving finished - Integrate inbound-check",
+         "url":"http:\/\/{{scope}}.fbm-wms-inbound-check.melifrontends.com\/wms\/workflow_receiving\/process",
+         "description":null,
+         "data":[
+            
+         ],
+         "dataOptions":null,
+         "dataMode":"raw",
+         "headerData":[
+            {
+               "key":"Content-Type",
+               "name":"Content-Type",
+               "value":"application\/json",
+               "type":"text"
+            },
+            {
+               "key":"X-Auth-Token",
+               "value":"{{tokn}}",
+               "type":"text"
+            }
+         ],
+         "method":"POST",
+         "pathVariableData":[
+            
+         ],
+         "queryParams":[
+            
+         ],
+         "auth":null,
+         "events":null,
+         "folder":null,
+         "currentHelper":null,
+         "helperAttributes":null,
+         "collectionId":"b63c669b-e198-4536-a48f-ec5d242b89f0",
+         "rawModeData":"{\n\t\"msg\": {\n\t\t\"id\": \"{{receiving_id}}\",\n\t\t\"warehouse_id\": \"BRTW01\",\n\t\t\"user_id\": {{test.user.id}},\n\t\t\"volumes\": [\n\t\t\t{\n\t\t\t\t\"volume_id\": \"294104\/3\",\n\t\t\t\t\"inbound_id\": 294104,\n\t\t\t\t\"pallet_id\": \"PL-0-007-000-00-00\",\n\t\t\t\t\"refused\": false\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"volume_id\": \"294104\/2\",\n\t\t\t\t\"inbound_id\": 294104,\n\t\t\t\t\"pallet_id\": \"PL-0-008-000-00-00\",\n\t\t\t\t\"refused\": false\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"volume_id\": \"294104\/1\",\n\t\t\t\t\"inbound_id\": 294104,\n\t\t\t\t\"pallet_id\": \"PL-0-008-000-00-00\",\n\t\t\t\t\"refused\": false\n\t\t\t}\n\t\t]\n\t}\n}",
+         "headers":"Content-Type: application\/json\nX-Auth-Token: {{tokn}}\n",
+         "pathVariables":{
+            
+         }
+      },
+      {
+         "id":"c4f354f6-5308-4e22-ab95-f17776aefc2c",
+         "name":"#3.3 - Refuse volume",
+         "url":"http:\/\/api.internal.ml.com\/fbm-wms-receiving-stage\/wms\/receivings\/{{receiving_id}}\/volumes\/105370\/1",
+         "description":null,
+         "data":[
+            
+         ],
+         "dataOptions":null,
+         "dataMode":"raw",
+         "headerData":[
+            {
+               "key":"Content-Type",
+               "name":"Content-Type",
+               "type":"text",
+               "value":"application\/json"
+            }
+         ],
+         "method":"PATCH",
+         "pathVariableData":[
+            
+         ],
+         "queryParams":[
+            
+         ],
+         "auth":null,
+         "events":null,
+         "folder":null,
+         "currentHelper":null,
+         "helperAttributes":null,
+         "collectionId":"b63c669b-e198-4536-a48f-ec5d242b89f0",
+         "rawModeData":"{\n\t\"refuse_reason\": \"damaged\"\n}",
+         "headers":"Content-Type: application\/json\n",
+         "pathVariables":{
+            
+         }
+      },
+      {
+         "id":"cd77af6a-bbf7-4d07-a607-de762c5dcf25",
+         "name":"#4 - Scan pallet",
+         "url":"http:\/\/{{scope.receiving}}.fbm-wms-receiving.melifrontends.com\/wms\/receivings\/{{receiving_id}}\/pallets\/PL-0-008-000-00-00",
+         "description":null,
+         "data":[
+            
+         ],
+         "dataOptions":null,
+         "dataMode":"raw",
+         "headerData":[
+            {
+               "key":"Content-Type",
+               "name":"Content-Type",
+               "type":"text",
+               "value":"application\/json"
+            }
+         ],
+         "method":"PATCH",
+         "pathVariableData":[
+            
+         ],
+         "queryParams":[
+            
+         ],
+         "auth":null,
+         "events":null,
+         "folder":null,
+         "currentHelper":null,
+         "helperAttributes":null,
+         "collectionId":"b63c669b-e198-4536-a48f-ec5d242b89f0",
+         "rawModeData":"{}",
+         "headers":"Content-Type: application\/json\n",
+         "pathVariables":{
+            
+         }
+      },
+      {
+         "id":"ed925712-cb1d-47bb-8df1-f0bd2508cd28",
+         "name":"#2.1 - Start receiving",
+         "url":"http:\/\/{{scope.receiving}}.fbm-wms-receiving.melifrontends.com\/wms\/receivings\/",
+         "description":null,
+         "data":[
+            
+         ],
+         "dataOptions":null,
+         "dataMode":"raw",
+         "headerData":[
+            {
+               "key":"Content-Type",
+               "name":"Content-Type",
+               "value":"application\/json",
+               "type":"text"
+            },
+            {
+               "key":"X-Auth-Token",
+               "value":"{{tokn}}",
+               "type":"text"
+            }
+         ],
+         "method":"POST",
+         "pathVariableData":[
+            
+         ],
+         "queryParams":[
+            
+         ],
+         "auth":null,
+         "events":[
+            {
+               "listen":"test",
+               "script":{
+                  "id":"ab82f0d3-8895-4022-b5f9-c2af0565d506",
+                  "exec":[
+                     "const id = pm.response.json().id;",
+                     "pm.globals.set(\"receiving_id\", id);"
+                  ],
+                  "type":"text\/javascript"
+               }
+            }
+         ],
+         "folder":null,
+         "preRequestScript":null,
+         "tests":"const id = pm.response.json().id;\npm.globals.set(\"receiving_id\", id);",
+         "currentHelper":null,
+         "helperAttributes":null,
+         "collectionId":"b63c669b-e198-4536-a48f-ec5d242b89f0",
+         "rawModeData":"{\n\t\"user_id\": \"{{test.user.id}}\",\n\t\"warehouse_id\": \"BRTW01\"\n}",
+         "headers":"Content-Type: application\/json\nX-Auth-Token: {{tokn}}\n",
+         "pathVariables":{
+            
+         }
+      },
+      {
+         "id":"ef4c201e-96c0-44c6-9638-0cfabaf47edb",
+         "name":"Send message to inbound-check about stage-inbounds",
+         "url":"http:\/\/{{scope}}.fbm-wms-inbound-check.melifrontends.com\/wms\/workflow_receiving\/process",
+         "description":null,
+         "data":[
+            
+         ],
+         "dataOptions":null,
+         "dataMode":"raw",
+         "headerData":[
+            {
+               "key":"Content-Type",
+               "value":"application\/json"
+            },
+            {
+               "key":"X-Auth-Token",
+               "value":"{{tokn}}"
+            }
+         ],
+         "method":"POST",
+         "pathVariableData":[
+            
+         ],
+         "queryParams":[
+            
+         ],
+         "auth":null,
+         "events":[
+            {
+               "listen":"test",
+               "script":{
+                  "id":"ae2db0b0-a7aa-43dd-b3f1-5d8549eeae17",
+                  "exec":[
+                     "const id = pm.response.json().checkin_id;",
+                     "pm.globals.set(\"checkin_id\", id);"
+                  ],
+                  "type":"text\/javascript"
+               }
+            }
+         ],
+         "folder":null,
+         "preRequestScript":null,
+         "tests":"const id = pm.response.json().checkin_id;\npm.globals.set(\"checkin_id\", id);",
+         "currentHelper":null,
+         "helperAttributes":null,
+         "collectionId":"b63c669b-e198-4536-a48f-ec5d242b89f0",
+         "rawModeData":"{\n\t\"msg\": {\n\t\t\"id\": \"{{receiving_id}}\",\n\t\t\"warehouse_id\": \"BRTW01\",\n\t\t\"user_id\": {{test.user.id}},\n\t\t\"volumes\": [\n\t\t\t{\n\t\t\t\t\"volume_id\": \"{{inbound_id}}\/1\",\n\t\t\t\t\"inbound_id\": {{inbound_id}},\n\t\t\t\t\"pallet_id\": \"PL-0-189-000-00-00\",\n\t\t\t\t\"refused\": 0\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"volume_id\": \"{{inbound_id}}\/2\",\n\t\t\t\t\"inbound_id\": {{inbound_id}},\n\t\t\t\t\"pallet_id\": \"PL-0-189-000-00-00\",\n\t\t\t\t\"refused\": 0\n\t\t\t}\n\t\t]\n\t}\n}",
+         "headers":"Content-Type: application\/json\nX-Auth-Token: {{tokn}}\n",
+         "pathVariables":{
+            
+         }
+      },
+      {
+         "id":"faf057e1-b23b-4bbd-833c-8b8a136331e7",
+         "name":"#1 - Delete lock",
+         "url":"{{scope}}.fbm-wms-warehouses.melifrontends.com\/wms\/warehouses\/{{warehouse.id}}\/addresses\/PL-0-008-000-00-00\/lock",
+         "description":null,
+         "data":null,
+         "dataOptions":null,
+         "dataMode":null,
+         "headerData":[
+            {
+               "key":"X-Auth-Token",
+               "value":"{{tokn}}"
+            }
+         ],
+         "method":"DELETE",
+         "pathVariableData":[
+            
+         ],
+         "queryParams":[
+            
+         ],
+         "auth":null,
+         "events":[
+            {
+               "listen":"test",
+               "script":{
+                  "id":"b362fa34-298d-4ef5-bc52-94d3207083f4",
+                  "exec":[
+                     ""
+                  ],
+                  "type":"text\/javascript"
+               }
+            }
+         ],
+         "folder":"77922d6f-7db2-43d7-a243-e0bf63a96b51",
+         "preRequestScript":null,
+         "tests":null,
+         "currentHelper":null,
+         "helperAttributes":null,
+         "collectionId":"b63c669b-e198-4536-a48f-ec5d242b89f0",
+         "headers":"X-Auth-Token: {{tokn}}\n",
+         "pathVariables":{
+            
+         }
+      },
+      {
+         "id":"fc2b2c76-6558-4217-8dd6-35f7f49059c9",
+         "name":"#2.2 - Scan dock",
+         "url":"http:\/\/{{scope.receiving}}.fbm-wms-receiving.melifrontends.com\/wms\/receivings\/{{receiving_id}}",
+         "description":null,
+         "data":[
+            
+         ],
+         "dataOptions":null,
+         "dataMode":"raw",
+         "headerData":[
+            {
+               "key":"Content-Type",
+               "name":"Content-Type",
+               "value":"application\/json",
+               "type":"text"
+            }
+         ],
+         "method":"PATCH",
+         "pathVariableData":[
+            
+         ],
+         "queryParams":[
+            
+         ],
+         "auth":null,
+         "events":null,
+         "folder":null,
+         "currentHelper":null,
+         "helperAttributes":null,
+         "collectionId":"b63c669b-e198-4536-a48f-ec5d242b89f0",
+         "rawModeData":"{\n\t\"address_id\": \"DK-0-008-000-00-00\"\n}",
+         "headers":"Content-Type: application\/json\n",
+         "pathVariables":{
+            
+         }
+      }
+   ]
+}
